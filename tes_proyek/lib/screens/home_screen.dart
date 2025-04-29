@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tes_proyek/screens/footer_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -17,6 +18,15 @@ class _HomeScreenState extends State<HomeScreen> {
 
   // Untuk mengontrol visibilitas filter floating
   OverlayEntry? _overlayEntry;
+
+  int _currentIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+    // Handle navigasi sesuai kebutuhan
+  }
 
   // Fungsi untuk menampilkan filter floating
   void _toggleFilterOverlay(BuildContext context) {
@@ -309,7 +319,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                         // Like dan Favorite
                         Container(
-                          height: 60,
+                          height: 40,
                           width: MediaQuery.of(context).size.width * 0.9,
                           decoration: BoxDecoration(
                             borderRadius: const BorderRadius.only(
@@ -332,10 +342,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                       size: 19,
                                     ),
                                   ),
-                                  const Text('Like',
-                                      style: TextStyle(
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.bold)),
                                 ],
                               ),
                               Column(
@@ -346,10 +352,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                     icon: const Icon(Icons.favorite_border,
                                         size: 19),
                                   ),
-                                  const Text('Favorite',
-                                      style: TextStyle(
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.bold)),
                                 ],
                               ),
                             ],
@@ -361,6 +363,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
               ),
             ),
+            FooterScreen(
+              currentIndex: _currentIndex,
+              onTap: _onItemTapped,
+              indicatorColor: Theme.of(context).primaryColor,
+            )
           ],
         ),
       ),
