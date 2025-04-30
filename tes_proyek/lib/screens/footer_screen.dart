@@ -1,28 +1,57 @@
 import 'package:flutter/material.dart';
+import 'package:tes_proyek/screens/home_screen.dart';
+import 'package:tes_proyek/screens/tes.dart';
 
-class FooterScreen extends StatelessWidget {
+class FooterScreen extends StatefulWidget {
   final int currentIndex;
-  final Function(int) onTap;
+  // final Function(int) onTap;
   final Color indicatorColor;
   final double indicatorHeight;
   final double indicatorWidth;
   
-  const FooterScreen({
+  FooterScreen({
     Key? key,
     required this.currentIndex,
-    required this.onTap,
+    // required this.onTap,
     this.indicatorColor = Colors.blue,
     this.indicatorHeight = 3.0,
     this.indicatorWidth = 40.0,
   }) : super(key: key);
 
   @override
+  State<FooterScreen> createState() => _FooterScreenState();
+}
+
+class _FooterScreenState extends State<FooterScreen> {
+  int _currentIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+    switch (index) {
+      case 0:
+        Navigator.push(context, MaterialPageRoute(builder: (context)=> HomeScreen()));
+        break;
+      case 1:
+        Navigator.push(context, MaterialPageRoute(builder: (context)=> Tes()));
+        break;
+      case 2:
+        Navigator.push(context, MaterialPageRoute(builder: (context)=> HomeScreen()));
+        break;
+      case 3:
+        Navigator.push(context, MaterialPageRoute(builder: (context)=> HomeScreen()));
+        break;
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         BottomNavigationBar(
-          currentIndex: currentIndex,
-          onTap: onTap,
+          currentIndex: widget.currentIndex,
+          onTap: _onItemTapped,
           type: BottomNavigationBarType.fixed,
           items: const [
             BottomNavigationBarItem(
@@ -48,17 +77,17 @@ class FooterScreen extends StatelessWidget {
           left: 0,
           right: 0,
           child: Container(
-            height: indicatorHeight,
+            height: widget.indicatorHeight,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: List.generate(
                 4,
                 (index) => Container(
-                  width: indicatorWidth,
-                  height: indicatorHeight,
+                  width: widget.indicatorWidth,
+                  height: widget.indicatorHeight,
                   decoration: BoxDecoration(
-                    color: index == currentIndex ? indicatorColor : Colors.transparent,
-                    borderRadius: BorderRadius.circular(indicatorHeight / 2),
+                    color: index == widget.currentIndex ? widget.indicatorColor : Colors.transparent,
+                    borderRadius: BorderRadius.circular(widget.indicatorHeight / 2),
                   ),
                 ),
               ),
@@ -69,3 +98,8 @@ class FooterScreen extends StatelessWidget {
     );
   }
 }
+
+
+
+
+

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tes_proyek/screens/footer_screen.dart';
+import 'package:tes_proyek/screens/tes.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -21,12 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   int _currentIndex = 0;
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
-    // Handle navigasi sesuai kebutuhan
-  }
+  
 
   // Fungsi untuk menampilkan filter floating
   void _toggleFilterOverlay(BuildContext context) {
@@ -365,8 +361,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             FooterScreen(
               currentIndex: _currentIndex,
-              onTap: _onItemTapped,
-              indicatorColor: Theme.of(context).primaryColor,
             )
           ],
         ),
