@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:tes_proyek/screens/favorite_screen.dart';
 import 'package:tes_proyek/screens/home_screen.dart';
-import 'package:tes_proyek/screens/tes.dart';
+import 'package:tes_proyek/screens/posting_screen.dart';
+import 'package:tes_proyek/screens/account_screen.dart';
 
 class FooterScreen extends StatefulWidget {
   final int currentIndex;
@@ -31,16 +33,16 @@ class _FooterScreenState extends State<FooterScreen> {
     });
     switch (index) {
       case 0:
-        Navigator.push(context, MaterialPageRoute(builder: (context)=> HomeScreen()));
+        Navigator.push(context, MaterialPageRoute(builder: (context)=> const HomeScreen()));
         break;
       case 1:
-        Navigator.push(context, MaterialPageRoute(builder: (context)=> Tes()));
+        Navigator.push(context, MaterialPageRoute(builder: (context)=> const PostingScreen()));
         break;
       case 2:
-        Navigator.push(context, MaterialPageRoute(builder: (context)=> HomeScreen()));
+        Navigator.push(context, MaterialPageRoute(builder: (context)=> const FavoriteScreen()));
         break;
       case 3:
-        Navigator.push(context, MaterialPageRoute(builder: (context)=> HomeScreen()));
+        Navigator.push(context, MaterialPageRoute(builder: (context)=> const AccountScreen()));
         break;
     }
   }
@@ -83,7 +85,7 @@ class _FooterScreenState extends State<FooterScreen> {
               children: List.generate(
                 4,
                 (index) => Container(
-                  width: widget.indicatorWidth,
+                  width: MediaQuery.of(context).size.width*0.2,
                   height: widget.indicatorHeight,
                   decoration: BoxDecoration(
                     color: index == widget.currentIndex ? widget.indicatorColor : Colors.transparent,

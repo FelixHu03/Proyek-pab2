@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class BackgroundScreenWp extends StatelessWidget {
   final Widget? child;
@@ -26,7 +27,7 @@ class BackgroundScreenWp extends StatelessWidget {
       children: [
         // Background image
         Image.asset(
-          'background/BACKGROUND welcome Screen.png',
+          'assets/background/BACKGROUND welcome Screen.png',
           fit: BoxFit.fill,
         ),
 
@@ -67,8 +68,8 @@ class BackgroundScreenWp extends StatelessWidget {
               // deskripsi
               Text(
                 deskripsi,
-                style: const TextStyle(
-                  fontSize: 16,
+                style: GoogleFonts.poppins(
+                  fontSize: 15,
                   color: Colors.black,
                   decoration: TextDecoration.none,
                 ),

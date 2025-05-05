@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tes_proyek/screens/footer_screen.dart';
-import 'package:tes_proyek/screens/tes.dart';
+import 'package:tes_proyek/screens/account_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -21,8 +21,6 @@ class _HomeScreenState extends State<HomeScreen> {
   OverlayEntry? _overlayEntry;
 
   int _currentIndex = 0;
-
-  
 
   // Fungsi untuk menampilkan filter floating
   void _toggleFilterOverlay(BuildContext context) {
@@ -200,11 +198,11 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: const Color(0xffF0E7E7),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(height: 25),
+            const SizedBox(height: 50),
             // Bagian search dan filter
             Row(
               children: [
@@ -213,12 +211,22 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: TextField(
                     controller: _searchController,
                     decoration: InputDecoration(
-                      prefixIcon: const Icon(Icons.search),
+                      isDense: true, // mengurangi tinggi otomatis
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 12),
+                      prefixIcon:
+                          const Icon(Icons.search, size: 20), // ikon kecil
                       labelText: 'Search',
+                      labelStyle: const TextStyle(fontSize: 14),
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide(color: Colors.grey.shade400),
                       ),
+                      filled: true,
+                      fillColor:
+                          const Color(0xfff6efef), // warna serupa dengan latar
                     ),
+                    style: const TextStyle(fontSize: 14), // kecilkan teks input
                   ),
                 ),
                 const SizedBox(width: 2),
@@ -249,7 +257,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
               ),
-            const SizedBox(height: 25),
             Expanded(
               child: ListView.builder(
                 itemCount: 5,
@@ -315,7 +322,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                         // Like dan Favorite
                         Container(
-                          height: 40,
+                          height: 48,
                           width: MediaQuery.of(context).size.width * 0.9,
                           decoration: BoxDecoration(
                             borderRadius: const BorderRadius.only(
@@ -359,11 +366,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
               ),
             ),
-            FooterScreen(
-              currentIndex: _currentIndex,
-            )
           ],
         ),
+      ),
+      bottomNavigationBar: FooterScreen(
+        currentIndex: _currentIndex,
       ),
     );
   }

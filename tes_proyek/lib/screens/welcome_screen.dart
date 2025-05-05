@@ -18,19 +18,19 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       'judul': 'JobNusa',
       'judul2nd': 'Welcome',
       'gambar': 'images/jobnusaicon.png',
-      'deskripsi': 'Welcome to Jobnusa\nFind The Best Career Opportunities\nfor Your Future!',
+      'deskripsi': 'Welcome to JobNusa\nFind The Best Career Opportunities\nfor Your Future!',
     },
     {
       'judul': '',
       'judul2nd': 'Find Your Dream Job',
       'gambar': 'images/wp2.png',
-      'deskripsi': 'Search for jobs based on\nfield of work, location, and personal\npreference.',
+      'deskripsi': 'Search for Jobs Based On\nfield of Work, Location, \nand Personal Preference.',
     },
     {
       'judul': '',
       'judul2nd': 'Ready to Start Your Career?',
       'gambar': 'images/wp3.png',
-      'deskripsi': 'With one clik,\nfind the best jobs and start your cereer\njournery now!',
+      'deskripsi': 'With One Clik,\nFind the Best Jobs and Start Your \nCereer Journery Now!',
       'child': 'images/getStarted.png'
     },
   ];
@@ -84,22 +84,22 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           currentContent['child']!,
           height: 80,
           ),
-          const SizedBox(height: 50,),
+          const SizedBox(height:60,),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               CircleAvatar(
-                radius: 6,
+                radius: 5,
                 backgroundColor: _currentPage == 0 ? Colors.black : Colors.white,
               ),
               const SizedBox(width: 18),
               CircleAvatar(
-                radius: 6,
+                radius: 5,
                 backgroundColor: _currentPage == 1 ? Colors.black : Colors.white,
               ),
               const SizedBox(width: 18),
               CircleAvatar(
-                radius: 6,
+                radius: 5,
                 backgroundColor: _currentPage == 2 ? Colors.black : Colors.white,
               ),
             ],
